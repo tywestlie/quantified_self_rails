@@ -92,4 +92,16 @@ describe 'Foods API' do
       expect(new_food['calories']).to eq(1200)
     end
   end
+
+  describe 'delete' do
+    it 'can delete a food' do
+      food1 = create(:food)
+      food2 = create(:food)
+      food3 = create(:food)
+
+      delete "/api/v1/foods/#{food3.id}"
+
+      expect(response.status).to eq(204)
+    end
+  end
 end
