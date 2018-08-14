@@ -75,4 +75,21 @@ describe 'Foods API' do
       expect(response.status).to eq(400)
     end
   end
+
+  describe 'update' do
+    it 'can update a food' do
+      food1 = create(:food)
+      food2 = create(:food)
+      food3 = create(:food)
+
+      params = { 'food': {'name': 'sugar cubes', 'calories': '1200'}}
+
+      patch "/api/v1/foods/#{food2.id}", params: params
+
+      new_food = JSON.parse(response.body)
+
+      expect(new_food['name']).to eq('sugar cubes')
+      expect(new_food['calories']).to eq(1200)
+    end
+  end
 end
