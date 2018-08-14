@@ -25,4 +25,29 @@ describe 'Foods API' do
     expect(parsed_foods[0].keys.include?('created_at')).to be_falsy
     expect(parsed_foods[0].keys.include?('updated_at')).to be_falsy
   end
+
+  it 'returns a single food item' do
+    food1 = create(:food)
+    food2 = create(:food)
+    food3 = create(:food)
+
+    get "/api/v1/foods/#{food2.id}"
+
+    expect(response).to be_successful
+  end
+
+  it 'returns the proper format' do
+    food1 = create(:food)
+    food2 = create(:food)
+    food3 = create(:food)
+
+    get "/api/v1/foods/#{food2.id}"
+
+    expect(response).to be_successful
+
+    parsed_food = JSON.parse(response.body)
+
+    expect(parsed_food.keys.include?('created_at')).to be_falsy
+    expect(parsed_food.keys.include?('updated_at')).to be_falsy
+  end
 end
