@@ -22,7 +22,6 @@ describe 'Foods API' do
 
     parsed_foods = JSON.parse(response.body)
 
-    expect(parsed_foods[0].keys.include?('id')).to be_falsy
     expect(parsed_foods[0].keys.include?('created_at')).to be_falsy
     expect(parsed_foods[0].keys.include?('updated_at')).to be_falsy
   end
