@@ -37,6 +37,10 @@ describe 'Meals API' do
       get "/api/v1/meals/#{meal1.id}/foods"
 
       expect(response).to be_successful
+      parsed_meal = JSON.parse(response.body)
+      expect(parsed_meal['name']).to eq(meal1.name)
+      expect(parsed_meal['foods'][0]['name']).to eq(food1.name)
+      expect(parsed_meal['foods'][0]['calories']).to eq(food1.calories)
     end
   end
 end
