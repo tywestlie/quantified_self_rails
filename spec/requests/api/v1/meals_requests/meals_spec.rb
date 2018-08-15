@@ -78,7 +78,7 @@ describe 'Meals API' do
 
       message = JSON.parse(response.body)
 
-        expect(message["message"]).to eq("Successfully removed #{food2.name} from #{meal1.name}")
+      expect(message["message"]).to eq("Successfully removed #{food2.name} from #{meal1.name}")
     end
   end
 end
