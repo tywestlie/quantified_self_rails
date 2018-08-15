@@ -23,10 +23,12 @@ ActiveRecord::Schema.define(version: 2018_08_13_215236) do
   end
 
   create_table "meal_foods", force: :cascade do |t|
-    t.bigint "meals_id"
-    t.bigint "foods_id"
-    t.index ["foods_id"], name: "index_meal_foods_on_foods_id"
-    t.index ["meals_id"], name: "index_meal_foods_on_meals_id"
+    t.bigint "meal_id"
+    t.bigint "food_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["food_id"], name: "index_meal_foods_on_food_id"
+    t.index ["meal_id"], name: "index_meal_foods_on_meal_id"
   end
 
   create_table "meals", force: :cascade do |t|
@@ -35,6 +37,6 @@ ActiveRecord::Schema.define(version: 2018_08_13_215236) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "meal_foods", "foods", column: "foods_id"
-  add_foreign_key "meal_foods", "meals", column: "meals_id"
+  add_foreign_key "meal_foods", "foods"
+  add_foreign_key "meal_foods", "meals"
 end
