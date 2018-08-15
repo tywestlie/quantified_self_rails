@@ -103,5 +103,15 @@ describe 'Foods API' do
 
       expect(response.status).to eq(204)
     end
+    
+    it "returns a 404" do
+      food1 = create(:food)
+      food2 = create(:food)
+      food3 = create(:food)
+
+      delete "/api/v1/foods/4"
+
+      expect(response.status).to eq(404)
+    end
   end
 end

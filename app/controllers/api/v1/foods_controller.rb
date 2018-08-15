@@ -19,20 +19,14 @@ class Api::V1::FoodsController < ApplicationController
 
   def update
     food = Food.find(params[:id])
-    if food.update(food_params)
-      render json: food
-    else
-      render status: 400
-    end
+    food.update(food_params)
+    render json: food
   end
 
   def destroy
     food = Food.find(params[:id])
-    if food.delete
-      render status: 204
-    else
-      render status: 404
-    end
+    food.delete
+    render status: 204
   end
 
   private
