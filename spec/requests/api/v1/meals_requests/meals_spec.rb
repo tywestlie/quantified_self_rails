@@ -60,4 +60,25 @@ describe 'Meals API' do
       expect(message["message"]).to eq("Successfully added #{food1.name} to #{meal1.name}")
     end
   end
+
+  describe 'Delete' do
+    it "can delete a food from a meal" do
+      meal1 = create(:meal)
+      meal2 = create(:meal)
+
+      food1 = meal1.foods.create(name: 'sugar cubes', calories: '1200')
+      food2 = meal1.foods.create(name: 'yams', calories: '300')
+
+      food3 = meal2.foods.create(name: 'eggs', calories: '600')
+      food4 = meal2.foods.create(name: 'green ham', calories: '5000')
+
+      delete "/api/v1/meals/#{meal1.id}/foods/#{food2.id}"
+
+      expect(response).to be_successful
+
+      message = JSON.parse(response.body)
+
+        expect(message["message"]).to eq("Successfully removed #{food2.name} from #{meal1.name}")
+    end
+  end
 end
