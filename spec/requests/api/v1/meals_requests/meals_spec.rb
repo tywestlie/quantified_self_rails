@@ -43,4 +43,19 @@ describe 'Meals API' do
       expect(parsed_meal['foods'][0]['calories']).to eq(food1.calories)
     end
   end
+
+  describe 'Post' do
+    it "can post a food to a meal" do
+      meal1 = create(:meal)
+      meal2 = create(:meal)
+
+      food1 = create(:food)
+      food2 = create(:food)
+
+      post "/api/v1/meals/#{meal1.id}/foods/#{food1.id}"
+
+      
+
+    end
+  end
 end
