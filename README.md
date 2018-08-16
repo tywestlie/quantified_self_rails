@@ -6,7 +6,7 @@ This application is a Ruby on Rails back-end that is designed to serve food, mea
 
 * Clone this application:
 ```
-git clone https://github.com/tywestlie/quantified_self_rails.git
+git clone
 ```
 * Run Bundle to install the gemfile:
 ```ruby
@@ -28,7 +28,7 @@ rspec
 These are the possible requests from the application and their JSON payloads.
 ## Food Endpoints
 `GET /api/v1/foods` Returns all the food in the database:
-```JSON
+```javascript
 [
     {
         id: 1,
@@ -53,7 +53,7 @@ These are the possible requests from the application and their JSON payloads.
 ]
 ```
 `GET /api/v1/foods/:id` Returns a single food object from the `:id` you've pased
-```JSON
+```javascript
   {
     id: 4,
     name: "Burrito",
