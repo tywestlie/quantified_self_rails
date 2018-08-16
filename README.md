@@ -5,6 +5,14 @@
 # Running Locally
 
 * Clone this application:
-` git clone `
-* 
+```
+git clone https://github.com/tywestlie/quantified_self_rails.git
+```
+*  Run Bundle to install the gemfile
+
+```ruby
+bundle install
+bundle update
+```
+
 
